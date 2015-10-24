@@ -8,13 +8,12 @@
   "globals": {
     "window": true,
     "document": true,
+    "module": true,
+    "define": true,
     "undefined": true,
     // project global name
     "resizeend": true,
-    // module exporting globals
-    "module": true,
-    "define": true,
-    // jasmine test globals
+    // jasmine reserved names
     "describe": true,
     "beforeEach": true,
     "afterEach": true,
@@ -25,7 +24,7 @@
   "rules": {
     "comma-dangle": 2,
     "no-cond-assign": 2,
-    "no-console": 1,
+    "no-console": 0,
     "no-constant-condition": 2,
     "no-dupe-keys": 0,
     "no-empty": 2,
@@ -115,7 +114,9 @@
 
     ////////// Stylistic Issues //////////
 
+    "array-bracket-spacing": [2, "always"],
     "brace-style": 2,
+    "block-spacing": [2, "always"],
     "camelcase": 2,
     "comma-spacing": 2,
     "comma-style": 2,
@@ -137,8 +138,9 @@
     "no-spaced-func": 2,
     "no-trailing-spaces": 2,
     "no-underscore-dangle": 0,
-    "no-extra-parens": 0,
-    "one-var": 1,
+    "no-extra-parens": 2,
+    "object-curly-spacing": [2, "always"],
+    "one-var": 0,
     "operator-assignment": 2,
     "quotes": [2, "single"],
     "semi": 2,

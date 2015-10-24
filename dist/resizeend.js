@@ -19,7 +19,7 @@
 
     // watch consecutive resize events
     var _watchResize = function() {
-        if ((Date.now() - time) >= delay) {
+        if (Date.now() - time >= delay) {
             // cancel raf
             _win.cancelAnimationFrame(frame);
 
