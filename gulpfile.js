@@ -29,6 +29,7 @@
     var paths = {
         src: './src/' + project.name + '.js',
         spec: './test/' + project.name + '.spec.js',
+        raf: './src/_rAf.js',
         output: './dist'
     }
 
@@ -87,11 +88,11 @@
     });
 
     /*
-     * run tests and creates distribution files
+     * run tests and creates distribution files for modern browsers
      *
-     * gulp build
+     * gulp build:main
      */
-    gulp.task('build', [ 'test' ], function () {
+    gulp.task('build:main', [ 'test' ], function () {
         return gulp.src(paths.src)
             .pipe($.concatUtil.header(banner))
             .pipe(gulp.dest(paths.output))
@@ -101,6 +102,32 @@
             }))
             .pipe(gulp.dest(paths.output));
     });
+
+    /*
+     * run tests and creates legacy distribution files
+     *
+     * gulp build:legacy
+     */
+    gulp.task('build:legacy', [ 'test' ], function () {
+        return gulp.src([ paths.raf, paths.src ])
+            .pipe($.concatUtil())
+            .pipe($.rename({
+                basename: project.name,
+                suffix: '.legacy'
+            }))
+            .pipe($.uglify())
+            .pipe($.rename({
+                suffix: '.min'
+            }))
+            .pipe(gulp.dest(paths.output));
+    });
+
+    /*
+     * run tests and creates all distribution files
+     *
+     * gulp build
+     */
+    gulp.task('build', [ 'build:legacy', 'build:main' ]);
 
     /*
      * default task */

@@ -24,8 +24,6 @@ window.addEventListener('resizeend', function() {
 The scripts takes some time to check if the user has stopped resizing the window. The default is `100`milliseconds but you can change that calling `resizeend.delay(250)`.
 
 
-
-
 ## Browser support
 
 This script works in all modern browsers (last version of Firefox, Chrome, Safari, Edge) and Internet Explorer 9 and 10.

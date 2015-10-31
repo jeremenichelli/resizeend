@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>resizeend | Jeremias Menichelli</title>
+
+    <style>
+        body {
+            background-color: #f7f7f7;
+            font-family: 'Roboto Condensed', sans-serif;
+        }
+
+        #message {
+            padding: 25px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            font-size: 18px;
+            text-align: center;
+            text-transform: uppercase;
+            transform: translate(-50%,-50%);
+            max-width: 90%;
+            width: 300px;
+        }
+    </style>
+</head>
+<body>
+    <div id="message">Start resizing the window to see how the event is fired</div>
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,400italic">
+    <link rel="stylesheet" href="https://raw.githubusercontent.com/necolas/normalize.css/master/normalize.css">
+    <script src="dist/resizeend.legacy.min.js"></script>
+    <script>
+        (function(_win, _doc) {
+            'use strict';
+
+            // configure delay
+            _win.resizeend.delay(250);
+
+            var msge = _doc.getElementById('message');
+
+            _win.addEventListener('resize', function() {
+                msge.textContent = 'You started to resize the window';
+            });
+
+            _win.addEventListener('resizeend', function() {
+                msge.textContent = 'You end up resizing the window';
+            });
+        })(window, document)
+    </script>
+</body>
+</html>
